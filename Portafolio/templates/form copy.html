@@ -1,0 +1,13 @@
+<title>{% block title %} Register {% endblock %}</title>
+
+{% block content %}
+    
+<form class="form" method="post" novalidate>
+    {%  csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" id="submit"> Registrar Proyecto </button>
+</form>
+
+{% endblock %}

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Portafolio'
+    'Portafolio',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'proyecto'
+LOGIN_REDIRECT_URL = 'portafolio'
+
+LOGIN_URL = 'login'
+
+LOGOUT_REDIRECT_URL = 'login'
 
 STATIC_URL = 'static/'
+
+CRISPY_TEMPLATE_PACK='bootstrap4'

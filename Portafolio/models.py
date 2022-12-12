@@ -8,3 +8,6 @@ class Proyecto(models.Model):
     desc_proyecto = models.TextField()
     tags = models.TextField()
     url_github = models.URLField()
+
+class Guardar_IP(models.Model):
+    IP = models.GenericIPAddressField()

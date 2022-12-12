@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.views.generic.list import ListView
-from .models import Proyecto
+from .models import Proyecto,Guardar_IP
 from django.contrib import messages
 from .forms import RegisterForm,ProyectoForm
+from ipware import get_client_ip
 
 # Create your views here.
 
-# Vista basada en clase
 
 def register(request):
     if request.method == 'POST':
@@ -27,6 +27,14 @@ class ProyectoView(ListView):
     model = Proyecto
     template_name = 'portafolio.html'
     context_object_name="proyectos"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ip,is_routable = get_client_ip(self.request)
+        ip_guardada = Guardar_IP.objects.filter(IP=ip).first()
+        if ip_guardada is None:
+            form = Guardar_IP(IP=ip)
+            form.save()
+        return context
 
 
 def post(request):
